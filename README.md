@@ -242,5 +242,5 @@ Has the season begun, and is the data available on www.sports-reference.com?
 Season not started yet or no players found.
 
 
-✅ This shows that the bot correctly checks for available stats and waits until the season begins.
-🔄 Once the season starts, it will return the Top 30 daily player edges in a table-like format.
+This shows that the bot correctly checks for available stats and waits until the season begins.
+Once the season starts, it will return the Top 30 daily player edges in a table-like format.
