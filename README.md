@@ -1,102 +1,246 @@
-NHL AI Props
+🏒 NHL AI Props
 
-An AI-powered NHL player props and betting edge calculator. This project scrapes player stats, team advanced stats, injury/news adjustments, and sportsbook odds to generate sharp betting lines and identify top edges.
+An AI-powered NHL player props and betting edge calculator.
 
-This project builds on my previous NBA AI Props
- project, incorporating improved scraping, advanced metrics, and matchup-based projections.
+This project:
 
-Features
+📊 Collects player stats, team stats, injury news, and sportsbook odds
 
-Pulls NHL player stats (historical and current) using Sportsipy.
+🤖 Uses Python to project player performance
 
-Scrapes team-level advanced stats and matchup adjustments.
+💰 Finds the best betting value (edges) for the day’s games
 
-Considers injury news and recent performance trends.
+✨ Features
 
-Pulls odds from sportsbooks to calculate edges.
+📊 Player stats (historical + live)
 
-Outputs top 30 projected edges for each game day in a table-like format.
+🏒 Team advanced stats and matchups
 
-Automatic player-to-team mapping with position data.
+🚑 Injury/news adjustments
 
-Project Folder Layout
+💰 Sportsbook odds with edge calculations
+
+📋 Daily Top 30 betting edges output
+
+🖥 Requirements
+
+Before you start, make sure you have:
+
+Python 3.9+ → check with python --version or python3 --version
+
+pip (Python package manager) → check with pip --version
+
+Git → check with git --version
+
+Code editor (recommended: VS Code; Notepad also works for quick edits)
+
+Internet connection (APIs and scraping require live data)
+
+(Optional) Virtual environment knowledge – tutorial steps included below, no prior setup needed
+
+📂 Project Layout
 nhl-props-ai/
+│── requirements.txt   # Python dependencies
+│── main.py            # Main script to run the bot
 │
-├── scripts/                 # Contains all Python scripts for scraping and processing
-│   ├── scrape_players.py
-│   ├── scrape_stats.py
-│   ├── scrape_team.py
-│   ├── scrape_news.py
-│   ├── fetch_odds.py
-│   ├── process_data.py
-│   └── projections.py
-│
-└── main.py                  # Main script to run the NHL AI Props bot
+└── scripts/           # Python scripts for scraping & processing
+    ├── scrape_players.py
+    ├── scrape_stats.py
+    ├── scrape_team.py
+    ├── scrape_news.py
+    ├── fetch_odds.py
+    ├── process_data.py
+    └── projections.py
 
-Getting Started
+🚀 Getting Started
+Step 1: Clone the Repo (Download the Project)
 
-Clone the repo
+Open PowerShell (Windows) or Terminal (Mac/Linux) and run:
 
 git clone https://github.com/nuahs3k/nhl-props-ai.git
 cd nhl-props-ai
 
+Step 2: Set Up a Virtual Environment
 
-Set up a virtual environment
+This keeps your project’s libraries clean and separate.
+
+Windows (PowerShell):
 
 python -m venv venv
-.\venv\Scripts\Activate  # Windows PowerShell
-source venv/bin/activate # Mac/Linux
+.\venv\Scripts\Activate
 
 
-Install required packages
+Mac/Linux (Terminal):
+
+python3 -m venv venv
+source venv/bin/activate
+
+
+✅ You should now see (venv) at the start of your command line.
+
+Step 3: Install Dependencies
+pip install -r requirements.txt
+
+Step 4: Add Your API Keys
+
+You’ll need two free API accounts:
+
+Odds API
+ → sportsbook odds
+
+News API
+ → injury/news data
+
+How to set them up:
+
+Sign up at each site (free tier is fine).
+
+Copy your API key from the dashboard.
+
+In the project folder, create a file named .env.
+
+On Windows: open Notepad → paste → "Save As" → select All Files → name it .env
+
+On Mac/Linux: open TextEdit or run nano .env in Terminal
+
+Inside .env, paste:
+
+ODDS_API_KEY=your_odds_api_key_here
+NEWS_API_KEY=your_news_api_key_here
+
+
+Save and close.
+
+Step 5: Run the Bot
+python main.py
+
+
+If the NHL season hasn’t started → the bot will notify you.
+
+If games are live → you’ll get a table of Top 30 betting edges.
+
+🎯 Custom Player Tracking
+
+Want to track specific players?
+
+Open scripts/projections.py
+
+Edit with the player name(s) you want
+
+Run python main.py again → get player-specific projections
+
+🛠 Troubleshooting & Common Errors
+
+⚠️ 1. Python not recognized
+
+'python' is not recognized as an internal or external command
+
+
+➡️ Python isn’t installed or not in your PATH.
+✅ Fix: Install Python and restart your terminal. On Windows, check “Add Python to PATH” during install.
+
+⚠️ 2. Virtual environment won’t activate (Windows)
+
+.\venv\Scripts\Activate : File C:\... is not digitally signed
+
+
+➡️ Security policy blocked it.
+✅ Fix (run as Admin once):
+
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+
+⚠️ 3. Missing packages
+
+ModuleNotFoundError: No module named 'pandas'
+
+
+➡️ Required libraries didn’t install.
+✅ Fix: Run again inside your venv:
 
 pip install -r requirements.txt
 
 
-Add your own API keys
-You will need to obtain your own API keys for:
+⚠️ 4. API key errors
 
-Odds API – for sportsbook data.
+Invalid API Key
+KeyError: 'ODDS_API_KEY'
 
-News API – for injury and news data.
 
-Create a .env file or update the scripts with your API keys.
+➡️ .env file missing or incorrect.
+✅ Fix: Double-check .env contents:
 
-Run the bot
+ODDS_API_KEY=your_key_here
+NEWS_API_KEY=your_key_here
 
+
+⚠️ 5. Season hasn’t started
+
+No stats available
+
+
+➡️ The NHL season isn’t active yet.
+✅ Fix: Wait until season starts.
+
+⚠️ 6. Odds not showing up
+
+Empty dataframe
+
+
+➡️ Sportsbooks haven’t published odds yet.
+✅ Fix: Try later, closer to game time.
+
+⚠️ 7. Script crashes with random error
+(e.g., Timeout, ConnectionError)
+➡️ Website or API blocked the request.
+✅ Fix: Wait a few minutes and retry.
+
+⚠️ 8. Wrong directory
+
+python: can't open file 'main.py': [Errno 2] No such file or directory
+
+
+➡️ You’re not in the right folder.
+✅ Fix:
+
+cd nhl-props-ai
 python main.py
 
+🔮 Future Plans
 
-If the season hasn't started, the bot will notify you and wait until stats are available.
+Live projections during the season
 
-Custom Player Projects
+Multiple sportsbook integrations
 
-Designed to allow you to track custom players or create player-specific projections.
+5+ years of historical data
 
-Supports advanced metrics and matchup adjustments for sharper edge calculations.
+AWS automation (Lambda/EC2 + CloudWatch + S3 + optional dashboard)
 
-Troubleshooting / Known Issues
+⚙️ Tech Stack
 
-Season not started → no stats available.
+This project uses:
 
-Missing or invalid API keys → bot will skip data collection.
+Python → core programming language
 
-Output depends on sportsbooks publishing odds; early in the season may return fewer results.
+Pandas / NumPy → data wrangling & calculations
 
-Future Plans
+BeautifulSoup → HTML parsing & scraping
 
-Update project during the NHL season for live stats and projections.
+SportsPy → player & team stats collection
 
-Incorporate multi-source sportsbook odds for enhanced edge calculation.
+APIs → Odds API (sportsbook data), News API (injury/news)
 
-Expand historical dataset analysis (past 5+ years) to refine projections.
+dotenv → secure API key management
 
-AWS Automation:
+Requests → API & web requests
 
-Run the bot in the cloud daily using AWS Lambda or EC2.
+When the NHL season hasn’t started, the bot will notify you like this:
 
-Schedule jobs with CloudWatch Events.
+Fetching player list...
+The requested page returned a valid response, but no data could be found. 
+Has the season begun, and is the data available on www.sports-reference.com?
+Season not started yet or no players found.
 
-Store historical outputs in S3 for analytics.
 
-Optional API Gateway integration for real-time dashboard access.
+✅ This shows that the bot correctly checks for available stats and waits until the season begins.
+🔄 Once the season starts, it will return the Top 30 daily player edges in a table-like format.
