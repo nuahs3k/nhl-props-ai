@@ -1,3 +1,17 @@
+⚠️ Project Update (October 2025)
+
+This NHL AI Props Project is currently on hold for full live functionality. The pipeline is fully built and ready to run, including player and team stats, matchup adjustments, Bayesian updates, correlation modeling, and automated play-of-the-day reports.
+
+However, due to API limitations, live NHL data access is restricted. Full projections and top-edge calculations require premium API subscriptions. Once API access is available, the project will resume generating live insights, and the pipeline will be updated throughout the season.
+
+This serves as a work-in-progress showcase of AI-driven sports analytics, with potential future improvements including cloud automation, scheduled notifications, and expanded historical data integration.
+
+
+
+
+
+
+
 🏒 NHL AI Props
 
 An AI-powered NHL player props and betting edge calculator.
